@@ -161,15 +161,15 @@ class ArticlesPanel extends React.Component {
         this.setState({showPopupAdd: false});
     }
 
-    saveArticle = () => {
+    saveArticle = (title, text, imageUrl) => {
         let loggedUserId = this.props.loggedUser.id;
         let newArticle = {
             "id": "1000",
             "userId": loggedUserId,
-            "createdAt": "2020-01-04T16:06:31.450Z",
-            "title": "New",
-            "text": "New",
-            "imageUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/derienzo777/128.jpg"
+            "createdAt": new Date(),
+            "title": title,
+            "text": text,
+            "imageUrl": imageUrl
         }
         let articlesUrl = 'http://5de4db8b712f9b0014513fc8.mockapi.io/api/user/' + loggedUserId + '/article';
         let xmlHttp = new XMLHttpRequest();
