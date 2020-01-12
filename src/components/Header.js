@@ -19,9 +19,9 @@ function LogOutButton (props) {
     );
 }
 
-function SelectedUserLabel (props) {
+function LoggedUserLabel (props) {
     return (
-        <label className='user-name'>{props.name}</label>
+        <label className='logged-user-name'>{props.name}</label>
     );
 }
 
@@ -32,7 +32,7 @@ function Header  (props) {
             <UsersModeButton/>
             <FeedModeButton/>
             <LogOutButton/>
-            <SelectedUserLabel name={user.name}/>
+            <LoggedUserLabel name={user.name}/>
         </div>
     );
 }

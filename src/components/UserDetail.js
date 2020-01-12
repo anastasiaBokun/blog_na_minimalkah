@@ -5,9 +5,9 @@ import './Articles.css';
 
 function UserHeader (props) {
     return (
-        <div className='user'>
-            <img className='user-image' src={props.user.imageUrl}></img>
-            <h2>{props.user.name}</h2>
+        <div className='user-header'>
+            <img className='user-header-image' src={props.user.imageUrl}></img>
+            <h2 className='user-header-name'>{props.user.name}</h2>
 
         </div>
     );

@@ -5,7 +5,7 @@ function LoginInput({login, onChangeLogin}) {
     return (
         <p>
             <label> Login:
-                <input type="text" name="login" value={login} onChange={({target: {value}}) => {
+                <input type="text" name="login" className="log-form-input" value={login} onChange={({target: {value}}) => {
                     onChangeLogin(value);
                 }}/>
             </label>
@@ -17,7 +17,7 @@ function PasswordInput({password, onChangePassword}) {
     return (
         <p>
             <label> Password:
-                <input type="password" name="password" value={password} onChange={({target: {value}}) => {
+                <input type="password" name="password" className="log-form-input" value={password} onChange={({target: {value}}) => {
                     onChangePassword(value);
                 }}/>
             </label>
@@ -28,8 +28,7 @@ function PasswordInput({password, onChangePassword}) {
 function NameInput({name, onChangeName}) {
     return (
         <p><label> User Name:
-            <input type="text" name="name"
-                   value={name} onChange={({target: {value}}) => {
+            <input type="text" name="name" className="log-form-input" value={name} onChange={({target: {value}}) => {
                 onChangeName(value);
             }}/>
         </label>
@@ -39,13 +38,13 @@ function NameInput({name, onChangeName}) {
 
 function SubmitButton(props){
     return (
-        <a><Link to='/articles' className="btn">Create</Link></a>
+        <a><Link to='/articles' className="submit-btn">Create</Link></a>
     );
 }
 
 function SwitchModeButton (props) {
     return (
-        <a><Link to='/login' className="switchMode">Already have an account?</Link></a>
+        <a><Link to='/login' className="switch-mode-btn">Already have an account?</Link></a>
     );
 }
 

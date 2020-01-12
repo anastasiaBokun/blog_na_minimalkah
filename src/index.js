@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './index.css';
 import './components/LoginForm.css';
-import './components/RegistrationForm.css';
 import './components/Header.css';
 import './components/Articles.css';
 import './components/Users.css';
@@ -25,25 +24,26 @@ const userTest =     {
 
 const App = (props) => (
     <div>
-        <LoggedHeader user={props.user}/>
         <Main user={props.user}/>
     </div>
 )
 
-const LoggedHeader = (props) => {
-    //if (window.location.pathname == '/login' || window.location.pathname == '/registration') return null;
-    return (
-        <Header user={props.user}/>
-    );
-}
 
 const Main = (props) => (
     <main>
         <Switch>
             <Route path='/login' render={(props) => <LoginForm user={userTest}/>}/>
             <Route path='/registration' render={(props) => <RegistrationForm user={userTest}/>}/>
-            <Route exact path='/articles' render={(props) => <ArticlesPanel loggedUser={userTest} selectedUserId=''/>}/>
-            <Route path='/users' render={(props) => <UsersPanelFull/>}/>
+            <Route exact path='/articles' render={(props) =>
+                <div>
+                    <Header user={userTest}/>
+                    <ArticlesPanel loggedUser={userTest} selectedUserId=''/>
+                </div>}/>
+            <Route path='/users' render={(props) =>
+                <div>
+                    <Header user={userTest}/>
+                    <UsersPanelFull/>
+                </div>}/>
         </Switch>
     </main>
 );

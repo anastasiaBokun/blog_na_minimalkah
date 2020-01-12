@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch, Route, Link} from 'react-router-dom';
+import './UserDetail.css';
 import UserDetail from "./UserDetail";
 
 function UserSearch ({filterText, onChangeFilterText}) {
@@ -22,8 +23,7 @@ function User (props) {
     return (
         <div className='user'>
             <img className='user-image' src={props.user.imageUrl}></img>
-            {/*<h2>{props.user.name}</h2>*/}
-            <a><Link to={`/users/${props.user.id}`}>{props.user.name}</Link></a>
+            <a><Link to={`/users/${props.user.id}`} className='user-name'>{props.user.name}</Link></a>
 
         </div>
     );

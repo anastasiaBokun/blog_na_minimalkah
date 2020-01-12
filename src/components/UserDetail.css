@@ -1,0 +1,29 @@
+.user-header {
+    position: relative;
+    height: 120px;
+
+    background: #808285;
+
+    border: 1px;
+    border-style: solid;
+    border-color: #808285;
+}
+
+.user-header-image {
+    position: relative;
+    float: left;
+    height: 110px;
+    margin: .2em;
+
+    border-radius: 110px;
+}
+
+.user-header-name {
+    position: relative;
+
+    top: .4em;
+
+    color: #fff;
+
+    font-size: xx-large;
+}

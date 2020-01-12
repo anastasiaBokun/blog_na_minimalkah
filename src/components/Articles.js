@@ -11,12 +11,9 @@ function Search ({filterText, onChangeFilterText}) {
         );
 }
 
-function DateFilter (props) {
+function AddArticleButton (props) {
     return (
-        <div>
-            <input className='date-input' type="text" placeholder="Date From" />
-            <input className='date-input' type="text" placeholder="Date To" />
-        </div>
+        <button className='add-article-btn' onClick={props.showAdd}>Add article</button>
     );
 }
 
@@ -24,7 +21,7 @@ function SearchLine  (props) {
     return (
         <div className='search-line'>
             <Search filterText={props.filterText} onChangeFilterText={props.onChangeFilterText}/>
-            <DateFilter/>
+            <AddArticleButton showAdd={props.showAdd}/>
         </div>
     );
 }
@@ -34,7 +31,7 @@ function Article (props) {
     const stringDate = new Date(props.article.createdAt).toLocaleString('en-US', options);
     return (
         <div className='article' onClick={() => {props.showDetail(props.article, props.user)}}>
-            <h2>{props.article.title}</h2>
+            <h2 className='article-title'>{props.article.title}</h2>
             <img className='article-image' src={props.article.imageUrl}></img>
             <p className='article-text'>{props.article.text}</p>
             <p className='article-author'>{props.user.name}</p>
@@ -62,12 +59,6 @@ function ArticlesList (props) {
                 {rows}
             </tbody>
         </table>
-    );
-}
-
-function AddArticleButton (props) {
-    return (
-        <button onClick={props.showAdd}>+</button>
     );
 }
 
@@ -185,9 +176,9 @@ class ArticlesPanel extends React.Component {
     render() {
         return (
             <div>
-                <SearchLine filterText = {this.state.filterText} onChangeFilterText={this.onChangeFilterText}/>
+                <SearchLine filterText = {this.state.filterText} onChangeFilterText={this.onChangeFilterText} showAdd={this.showAdd}/>
                 <ArticlesList articles={this.state.articles} users={this.state.users} showDetail={this.showDetail}/>
-                <AddArticleButton showAdd={this.showAdd}/>
+                {/*<AddArticleButton showAdd={this.showAdd}/>*/}
                 {this.state.showPopup ? <ArticleDetail article = {this.state.selectedArticle} user={this.state.selectedUser} closePopup={this.closeDetail}/> : null}
                 {this.state.showPopupAdd ? <AddArticle user={this.props.loggedUser} saveArticle={this.saveArticle} closePopup={this.closeAdd}/> : null}
             </div>

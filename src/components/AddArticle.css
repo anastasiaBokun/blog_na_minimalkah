@@ -1,8 +1,4 @@
-h1 {
-    margin: 0;
-    padding: 0;
-}
-.popup {
+.add-popup {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -11,14 +7,117 @@ h1 {
     right: 0;
     bottom: 0;
     margin: auto;
+
     background-color: rgba(0,0,0, 0.5);
+
+    z-index: 2;
 }
-.popup_inner {
+.add-popup-inner {
     position: absolute;
     left: 25%;
     right: 25%;
-    top: 25%;
-    bottom: 25%;
+    top: 10%;
+    bottom: 10%;
     margin: auto;
-    background: white;
+
+    background: #fff;
+}
+
+.add-header {
+    margin-left: 20px;
+    color: #757575;
+}
+
+.add-title-input {
+    display: block;
+
+    width: 95%;
+    margin: 20px;
+    padding: .5em 0;
+    padding: 1.25em;
+
+    border: 1px solid #eaeaea;
+
+    color: #757575;
+}
+
+.add-title-input:focus {
+    outline: none;
+}
+
+.add-text-input {
+    display: block;
+
+    width: 95%;
+    height: 50%;
+    margin: 20px;
+    padding: .5em 0;
+    padding: 1.25em;
+
+    border: 1px solid #eaeaea;
+
+    color: #757575;
+}
+
+.add-text-input:focus {
+    outline: none;
+}
+
+.add-image-url-input {
+    display: block;
+
+    width: 95%;
+    margin: 20px;
+    padding: .5em 0;
+    padding: 1.25em;
+
+    border: 1px solid #eaeaea;
+
+    color: #757575;
+}
+
+.add-image-url-input:focus {
+    outline: none;
+}
+
+.save-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    height: 30px;
+    width: 70px;
+    float: right;
+
+
+    margin-right: .5em;
+    margin-top: .7em;
+
+    background: #00848C;
+    color: #fff;
+
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: 0px 2px 5px rgba(0,0,0,.25);
+}
+
+.cancel-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    height: 30px;
+    width: 70px;
+    float: right;
+
+
+    margin-right: .5em;
+    margin-top: .7em;
+
+    background: #00848C;
+    color: #fff;
+
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: 0px 2px 5px rgba(0,0,0,.25);
 }
