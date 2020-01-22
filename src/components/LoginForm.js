@@ -25,13 +25,13 @@ function PasswordInput({password, onChangePassword}) {
     );
 }
 
-function SubmitButton(props){
+function SubmitButton(){
         return (
             <Link to='/articles' className="submit-btn">Log in</Link>
         );
 }
 
-function SwitchModeButton (props) {
+function SwitchModeButton () {
     return (
         <Link to='/registration' className="switch-mode-btn">Create new account?</Link>
     );

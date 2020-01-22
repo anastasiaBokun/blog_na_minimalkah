@@ -3,11 +3,11 @@ import React from 'react';
 import ArticlesPanel from "./Articles";
 import './Articles.css';
 
-function UserHeader (props) {
+function UserHeader ({user}) {
     return (
         <div className='user-header'>
-            <img className='user-header-image' src={props.user.imageUrl}></img>
-            <h2 className='user-header-name'>{props.user.name}</h2>
+            <img className='user-header-image' src={user.imageUrl}/>
+            <h2 className='user-header-name'>{user.name}</h2>
 
         </div>
     );
@@ -26,9 +26,9 @@ class UserDetail extends React.Component {
         const usersUrl = 'http://5de4db8b712f9b0014513fc8.mockapi.io/api/user';
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = () => {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 this.setState({user:  JSON.parse(xmlHttp.responseText).find((user) => {
-                        return user.id.toUpperCase() == userId;;
+                        return user.id.toUpperCase() === userId;;
                     })});
             }
         }

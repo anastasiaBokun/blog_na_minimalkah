@@ -29,17 +29,17 @@ const App = (props) => (
 )
 
 
-const Main = (props) => (
+const Main = () => (
     <main>
         <Switch>
-            <Route path='/login' render={(props) => <LoginForm user={userTest}/>}/>
-            <Route path='/registration' render={(props) => <RegistrationForm user={userTest}/>}/>
-            <Route exact path='/articles' render={(props) =>
+            <Route path='/login' render={() => <LoginForm user={userTest}/>}/>
+            <Route path='/registration' render={() => <RegistrationForm user={userTest}/>}/>
+            <Route exact path='/articles' render={() =>
                 <div>
                     <Header user={userTest}/>
                     <ArticlesPanel loggedUser={userTest} selectedUserId=''/>
                 </div>}/>
-            <Route path='/users' render={(props) =>
+            <Route path='/users' render={() =>
                 <div>
                     <Header user={userTest}/>
                     <UsersPanelFull/>

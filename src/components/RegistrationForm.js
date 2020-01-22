@@ -37,13 +37,13 @@ function NameInput({name, onChangeName}) {
     );
 }
 
-function SubmitButton(props){
+function SubmitButton(){
     return (
         <Link to='/articles' className="submit-btn">Create</Link>
     );
 }
 
-function SwitchModeButton (props) {
+function SwitchModeButton () {
     return (
         <Link to='/login' className="switch-mode-btn">Already have an account?</Link>
     );

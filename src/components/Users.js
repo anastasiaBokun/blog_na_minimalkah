@@ -11,28 +11,27 @@ function UserSearch ({filterText, onChangeFilterText}) {
         );
 }
 
-function UserSearchLine (props) {
+function UserSearchLine ({filterText, onChangeFilterText}) {
     return (
         <div className='user-search-line'>
-            <UserSearch filterText={props.filterText} onChangeFilterText={props.onChangeFilterText}/>
+            <UserSearch filterText={filterText} onChangeFilterText={onChangeFilterText}/>
         </div>
     );
 }
 
-function User (props) {
+function User ({user}) {
     return (
         <div className='user'>
-            <img className='user-image' src={props.user.imageUrl}></img>
-            <a><Link to={`/users/${props.user.id}`} className='user-name'>{props.user.name}</Link></a>
-
+            <img className='user-image' src={user.imageUrl}/>
+            <a><Link to={`/users/${user.id}`} className='user-name'>{user.name}</Link></a>
         </div>
     );
 }
 
-function UsersList (props) {
+function UsersList ({users}) {
     const rows = [];
 
-    props.users.forEach((user) => {
+    users.forEach((user) => {
         rows.push(<User key={user.id} user={user}/>);
     });
 
@@ -58,7 +57,7 @@ class UsersPanel extends React.Component {
         const usersUrl = 'http://5de4db8b712f9b0014513fc8.mockapi.io/api/user';
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = () => {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 this.setState({users: JSON.parse(xmlHttp.responseText).filter((user) => {
                         return user.name.toUpperCase().includes(this.state.filterText.toUpperCase());
                     })});
@@ -89,11 +88,11 @@ class UsersPanel extends React.Component {
     }
 }
 
-function UsersPanelFull (props) {
+function UsersPanelFull () {
     return (
         <Switch>
             <Route exact path='/users' component={UsersPanel}/>
-            <Route path="/users/:id" render={(props) => <UserDetail/>}/>
+            <Route path="/users/:id" render={() => <UserDetail/>}/>
         </Switch>
     );
 }

@@ -11,45 +11,45 @@ function Search ({filterText, onChangeFilterText}) {
         );
 }
 
-function AddArticleButton (props) {
+function AddArticleButton ({showAdd}) {
     return (
-        <button className='add-article-btn' onClick={props.showAdd}>Add article</button>
+        <button className='add-article-btn' onClick={showAdd}>Add article</button>
     );
 }
 
-function SearchLine  (props) {
+function SearchLine  ({filterText, onChangeFilterText, showAdd}) {
     return (
         <div className='search-line'>
-            <Search filterText={props.filterText} onChangeFilterText={props.onChangeFilterText}/>
-            <AddArticleButton showAdd={props.showAdd}/>
+            <Search filterText={filterText} onChangeFilterText={onChangeFilterText}/>
+            <AddArticleButton showAdd={showAdd}/>
         </div>
     );
 }
 
-function Article (props) {
+function Article ({article, user, showDetail}) {
     const options = {year: 'numeric', month: 'numeric', day: 'numeric' };
-    const stringDate = new Date(props.article.createdAt).toLocaleString('en-US', options);
+    const stringDate = new Date(article.createdAt).toLocaleString('en-US', options);
     return (
-        <div className='article' onClick={() => {props.showDetail(props.article, props.user)}}>
-            <h2 className='article-title'>{props.article.title}</h2>
-            <img className='article-image' src={props.article.imageUrl}></img>
-            <p className='article-text'>{props.article.text}</p>
-            <p className='article-author'>{props.user.name}</p>
+        <div className='article' onClick={() => {showDetail(article, user)}}>
+            <h2 className='article-title'>{article.title}</h2>
+            <img className='article-image' src={article.imageUrl}/>
+            <p className='article-text'>{article.text}</p>
+            <p className='article-author'>{user.name}</p>
             <p className='article-date'>{stringDate}</p>
         </div>
     );
 }
 
-function ArticlesList (props) {
+function ArticlesList ({articles, users, showDetail}) {
     const rows = [];
 
-    props.articles.forEach((article) => {
-            const user = props.users.find((element) => {
+    articles.forEach((article) => {
+            const user = users.find((element) => {
                 if (element.id === article.userId)
                     return true;
                 return false;
             });
-            rows.push(<Article key={article.id} article={article} user={user} showDetail={props.showDetail}/>);
+            rows.push(<Article key={article.id} article={article} user={user} showDetail={showDetail}/>);
         }
     );
 
@@ -89,7 +89,7 @@ class ArticlesPanel extends React.Component {
     {
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = () => {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
                 callback(xmlHttp.responseText);
         }
         xmlHttp.open("GET", theUrl, true); // true for asynchronous
@@ -100,7 +100,7 @@ class ArticlesPanel extends React.Component {
         let users = JSON.parse(responseText);
         if (this.props.selectedUserId && this.props.selectedUserId !== '') {
             let selectedUsers = users.filter((user) => {
-                return user.id == this.props.selectedUserId;
+                return user.id === this.props.selectedUserId;
             })
             this.setState({users: selectedUsers});
         } else {
@@ -165,7 +165,7 @@ class ArticlesPanel extends React.Component {
         let articlesUrl = 'http://5de4db8b712f9b0014513fc8.mockapi.io/api/user/' + loggedUserId + '/article';
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = () => {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 201)
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 201)
                 alert('Saved successfully!');
         }
         xmlHttp.open("POST", articlesUrl, true); // true for asynchronous
